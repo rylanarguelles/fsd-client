@@ -1,39 +1,49 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Badge from '@material-ui/core/Badge';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/styles';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
-const styles = (theme) => ({
-    menuLink: {
-        color: '#000000',
-        textDecoration: 'none',
-    },
-});
-
-class NavigationMenu extends React.Component {
+export default class NavigationMenu extends React.Component {
     render() {
-        const { classes } = this.props;
         return (
             <Grid container direction='column' spacing={2}>
                 <Grid item>
                     <Typography variant='h3'>Healthy Burger</Typography>
                 </Grid>
-                <Grid item container direction='row' spacing={4}>
+                <Grid
+                    item
+                    container
+                    direction='row'
+                    justify='space-between'
+                    alignItems='center'
+                >
                     <Grid item>
-                        <Link to='/menu' className={classes.menuLink}>
-                            <Typography variant='overline'>Menu</Typography>
-                        </Link>
+                        <Grid container direction='row' spacing={4}>
+                            <Grid item>
+                                <Link to=''>
+                                    <Typography variant='overline'>
+                                        Menu
+                                    </Typography>
+                                </Link>
+                            </Grid>
+                            <Grid item>
+                                <Link to='/booking'>
+                                    <Typography variant='overline'>
+                                        Booking
+                                    </Typography>
+                                </Link>
+                            </Grid>
+                        </Grid>
                     </Grid>
                     <Grid item>
-                        <Link to='/booking' className={classes.menuLink}>
-                            <Typography variant='overline'>Booking</Typography>
-                        </Link>
+                        <Badge badgeContent={0} color='primary'>
+                            <ShoppingCartIcon />
+                        </Badge>
                     </Grid>
                 </Grid>
             </Grid>
         );
     }
 }
-
-export default withStyles(styles)(NavigationMenu);
