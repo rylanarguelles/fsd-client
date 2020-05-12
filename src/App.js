@@ -1,4 +1,6 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 import NavigationMenu from './components/universal/NavigationMenu';
 import { withStyles } from '@material-ui/styles';
@@ -14,12 +16,22 @@ class App extends React.Component {
     render() {
         const { classes } = this.props;
         return (
-            <Grid container direction='column' className={classes.root}>
-                <Grid item>
-                    <NavigationMenu />
+            <Router>
+                <Grid
+                    container
+                    direction='column'
+                    spacing={4}
+                    className={classes.root}
+                >
+                    <Grid item>
+                        <NavigationMenu />
+                    </Grid>
+                    <Grid item>
+                        <Divider />
+                    </Grid>
+                    <Grid item>{/* page */}</Grid>
                 </Grid>
-                <Grid item>{/* page */}</Grid>
-            </Grid>
+            </Router>
         );
     }
 }
