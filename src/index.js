@@ -5,16 +5,11 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'mobx-react';
 import MenuStore from './store/menu_store';
 
-ReactDOM.render(
-    <React.StrictMode>
-        <Provider MenuStore={MenuStore}>
-            <App />
-        </Provider>
-    </React.StrictMode>,
-    document.getElementById('root'),
+const Root = (
+    <Provider MenuStore={MenuStore}>
+        <App />
+    </Provider>
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+ReactDOM.render(Root, document.getElementById('root'));
 serviceWorker.unregister();
