@@ -19,7 +19,10 @@ class MenuItem extends React.Component {
             <Card className={classes.item}>
                 <CardContent>
                     <Typography variant='h6'>Beef Burger</Typography>
-                    <Typography color='textSecondary'>506 kJ</Typography>
+                    <Typography>9 USD</Typography>
+                    <Typography variant='overline' color='textSecondary'>
+                        506 kJ
+                    </Typography>
                 </CardContent>
                 <CardActions>
                     <Button color='primary' onClick={toggleAddDialog}>
