@@ -14,7 +14,7 @@ const styles = (theme) => ({
 
 class MenuItem extends React.Component {
     render() {
-        const { item, classes } = this.props;
+        const { item, toggleAddDialog, classes } = this.props;
         return (
             <Card className={classes.item}>
                 <CardContent>
@@ -22,7 +22,9 @@ class MenuItem extends React.Component {
                     <Typography color='textSecondary'>506 kJ</Typography>
                 </CardContent>
                 <CardActions>
-                    <Button color='primary'>Add to Cart</Button>
+                    <Button color='primary' onClick={toggleAddDialog}>
+                        Add to Cart
+                    </Button>
                 </CardActions>
             </Card>
         );
