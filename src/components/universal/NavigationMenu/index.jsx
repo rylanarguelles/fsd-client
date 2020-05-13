@@ -1,12 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { inject, observer } from 'mobx-react';
 import Badge from '@material-ui/core/Badge';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import MenuController from '../../../controllers/menu_controller';
 
-export default class NavigationMenu extends React.Component {
+class NavigationMenu extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.toggleCartDrawer = this.toggleCartDrawer.bind(this);
+    }
+
+    toggleCartDrawer() {
+        const { MenuStore } = this.props;
+        const {
+            cartState: { isShowing },
+        } = MenuStore;
+        MenuController.toggleCartDrawer(!isShowing);
+    }
+
     render() {
         return (
             <Grid container direction='column' spacing={2}>
@@ -39,7 +55,7 @@ export default class NavigationMenu extends React.Component {
                         </Grid>
                     </Grid>
                     <Grid item>
-                        <IconButton>
+                        <IconButton onClick={this.toggleCartDrawer}>
                             <Badge badgeContent={0} color='primary'>
                                 <ShoppingCartIcon />
                             </Badge>
@@ -50,3 +66,5 @@ export default class NavigationMenu extends React.Component {
         );
     }
 }
+
+export default inject('MenuStore')(observer(NavigationMenu));
