@@ -19,6 +19,7 @@ class AddItemDialog extends React.Component {
 
         this.closeAddItemDialog = this.closeAddItemDialog.bind(this);
         this.changeQuantity = this.changeQuantity.bind(this);
+        this.addToCart = this.addToCart.bind(this);
     }
 
     closeAddItemDialog() {
@@ -42,6 +43,11 @@ class AddItemDialog extends React.Component {
         }
     }
 
+    addToCart() {
+        MenuController.addItemToCart();
+        this.closeAddItemDialog();
+    }
+
     render() {
         const { MenuStore } = this.props;
         const {
@@ -60,9 +66,7 @@ class AddItemDialog extends React.Component {
             >
                 <DialogTitle>Add Beef Burger to Cart</DialogTitle>
                 <DialogContent>
-                    <DialogContentText>
-                        <Typography>Select the quantity: </Typography>
-                    </DialogContentText>
+                    <DialogContentText>Select the quantity:</DialogContentText>
                     <Grid
                         container
                         direction='row'
@@ -90,7 +94,9 @@ class AddItemDialog extends React.Component {
                             </IconButton>
                         </Grid>
                         <Grid item>
-                            <Typography>= Price * Quantity</Typography>
+                            <Typography color='textSecondary'>
+                                = Price * Quantity
+                            </Typography>
                         </Grid>
                     </Grid>
                 </DialogContent>
@@ -98,7 +104,9 @@ class AddItemDialog extends React.Component {
                     <Button color='secondary' onClick={this.closeAddItemDialog}>
                         Cancel
                     </Button>
-                    <Button color='primary'>Add</Button>
+                    <Button color='primary' onClick={this.addToCart}>
+                        Add
+                    </Button>
                 </DialogActions>
             </Dialog>
         );
