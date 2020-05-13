@@ -95,7 +95,7 @@ class AddItemDialog extends React.Component {
                         </Grid>
                         <Grid item>
                             <Typography color='textSecondary'>
-                                = Price * Quantity
+                                Price * Quantity
                             </Typography>
                         </Grid>
                     </Grid>
