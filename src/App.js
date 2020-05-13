@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 import NavigationMenu from './components/universal/NavigationMenu';
+import Menu from './pages/Menu';
 import { withStyles } from '@material-ui/styles';
 
 const styles = (theme) => ({
@@ -20,7 +21,7 @@ class App extends React.Component {
                 <Grid
                     container
                     direction='column'
-                    spacing={4}
+                    spacing={3}
                     className={classes.root}
                 >
                     <Grid item>
@@ -29,7 +30,11 @@ class App extends React.Component {
                     <Grid item>
                         <Divider />
                     </Grid>
-                    <Grid item>{/* page */}</Grid>
+                    <Grid item>
+                        <Route path=''>
+                            <Menu />
+                        </Route>
+                    </Grid>
                 </Grid>
             </Router>
         );
