@@ -4,6 +4,7 @@ import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 import NavigationMenu from './components/universal/NavigationMenu';
 import Menu from './pages/Menu';
+import Cart from './components/universal/Cart';
 import { withStyles } from '@material-ui/styles';
 
 const styles = (theme) => ({
@@ -35,6 +36,7 @@ class App extends React.Component {
                             <Menu />
                         </Route>
                     </Grid>
+                    <Cart />
                 </Grid>
             </Router>
         );
