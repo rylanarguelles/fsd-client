@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Badge from '@material-ui/core/Badge';
 import Grid from '@material-ui/core/Grid';
+import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
@@ -38,9 +39,11 @@ export default class NavigationMenu extends React.Component {
                         </Grid>
                     </Grid>
                     <Grid item>
-                        <Badge badgeContent={0} color='primary'>
-                            <ShoppingCartIcon />
-                        </Badge>
+                        <IconButton>
+                            <Badge badgeContent={0} color='primary'>
+                                <ShoppingCartIcon />
+                            </Badge>
+                        </IconButton>
                     </Grid>
                 </Grid>
             </Grid>
