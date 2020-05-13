@@ -2,10 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { Provider } from 'mobx-react';
+import MenuStore from './store/menu_store';
 
 ReactDOM.render(
     <React.StrictMode>
-        <App />
+        <Provider MenuStore={MenuStore}>
+            <App />
+        </Provider>
     </React.StrictMode>,
     document.getElementById('root'),
 );
