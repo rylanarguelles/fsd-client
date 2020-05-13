@@ -20,4 +20,8 @@ export default class MenuController {
         });
         console.log(MenuStore.cart);
     }
+
+    static toggleCartDrawer(shouldShow) {
+        MenuStore.cartState.isShowing = shouldShow;
+    }
 }
