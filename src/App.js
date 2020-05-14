@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import NavigationMenu from './components/universal/NavigationMenu';
 import Menu from './pages/Menu';
 import Cart from './components/universal/Cart';
+import CheckoutDialog from './components/universal/CheckoutDialog';
 import { withStyles } from '@material-ui/styles';
 
 const styles = (theme) => ({
@@ -37,6 +38,7 @@ class App extends React.Component {
                         </Route>
                     </Grid>
                     <Cart />
+                    <CheckoutDialog />
                 </Grid>
             </Router>
         );
