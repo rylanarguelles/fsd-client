@@ -1,5 +1,7 @@
 import MenuStore from '../store/menu_store';
 
+// TODO: placeOrder static function
+
 export default class MenuController {
     static toggleAddItemDialog(shouldShow) {
         MenuStore.addCartItemForm.isShowing = shouldShow;
