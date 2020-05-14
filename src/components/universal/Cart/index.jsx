@@ -8,6 +8,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Typography from '@material-ui/core/Typography';
 import CartItemRow from './components/CartItemRow';
 import MenuController from '../../../controllers/menu_controller';
 
@@ -30,50 +31,65 @@ class Cart extends React.Component {
     render() {
         const { MenuStore } = this.props;
         const {
+            cart,
             cartState: { isShowing },
+            cartTotal,
         } = MenuStore;
+        const emptyCart = cart.length === 0;
         return (
             <Drawer
                 anchor='right'
                 open={isShowing}
                 onClose={this.closeCartDrawer}
             >
-                <Grid
-                    container
-                    direction='column'
-                    spacing={2}
-                    alignItems='center'
-                >
-                    <Grid item>
-                        <Table>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell>Qty.</TableCell>
-                                    <TableCell>Item</TableCell>
-                                    <TableCell>Subtotal</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                <CartItemRow />
-                                <CartItemRow />
-                                <CartItemRow />
-                                <TableRow>
-                                    <TableCell></TableCell>
-                                    <TableCell>Total</TableCell>
-                                    <TableCell align='right'>27 USD</TableCell>
-                                </TableRow>
-                            </TableBody>
-                        </Table>
+                {!emptyCart && (
+                    <Grid
+                        container
+                        direction='column'
+                        spacing={2}
+                        alignItems='center'
+                    >
+                        <Grid item>
+                            <Table>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell></TableCell>
+                                        <TableCell>Qty.</TableCell>
+                                        <TableCell>Item</TableCell>
+                                        <TableCell>Subtotal</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {cart.map((item) => (
+                                        <CartItemRow
+                                            key={item.item.id}
+                                            cartItem={item}
+                                        />
+                                    ))}
+                                    <TableRow>
+                                        <TableCell></TableCell>
+                                        <TableCell></TableCell>
+                                        <TableCell>Total</TableCell>
+                                        <TableCell align='right'>{`${cartTotal} AUD`}</TableCell>
+                                    </TableRow>
+                                </TableBody>
+                            </Table>
+                        </Grid>
+                        <Grid item>
+                            <Button
+                                color='primary'
+                                onClick={this.openCheckoutDialog}
+                            >
+                                Proceed to Checkout
+                            </Button>
+                        </Grid>
                     </Grid>
-                    <Grid item>
-                        <Button
-                            color='primary'
-                            onClick={this.openCheckoutDialog}
-                        >
-                            Proceed to Checkout
-                        </Button>
-                    </Grid>
-                </Grid>
+                )}
+                {emptyCart && (
+                    <Typography>
+                        Items you add to your cart will appear here.
+                    </Typography>
+                )}
             </Drawer>
         );
     }
