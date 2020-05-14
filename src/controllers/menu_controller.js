@@ -24,4 +24,12 @@ export default class MenuController {
     static toggleCartDrawer(shouldShow) {
         MenuStore.cartState.isShowing = shouldShow;
     }
+
+    static toggleCheckoutDialog(shouldShow) {
+        MenuStore.checkoutState.isShowing = shouldShow;
+
+        if (!shouldShow) {
+            MenuStore.checkoutState.resetForm();
+        }
+    }
 }

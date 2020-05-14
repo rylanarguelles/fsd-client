@@ -16,10 +16,15 @@ class Cart extends React.Component {
         super(props);
 
         this.closeCartDrawer = this.closeCartDrawer.bind(this);
+        this.openCheckoutDialog = this.openCheckoutDialog.bind(this);
     }
 
     closeCartDrawer() {
         MenuController.toggleCartDrawer(false);
+    }
+
+    openCheckoutDialog() {
+        MenuController.toggleCheckoutDialog(true);
     }
 
     render() {
@@ -33,7 +38,12 @@ class Cart extends React.Component {
                 open={isShowing}
                 onClose={this.closeCartDrawer}
             >
-                <Grid container direction='column' spacing={2} alignItems='center'>
+                <Grid
+                    container
+                    direction='column'
+                    spacing={2}
+                    alignItems='center'
+                >
                     <Grid item>
                         <Table>
                             <TableHead>
@@ -56,7 +66,12 @@ class Cart extends React.Component {
                         </Table>
                     </Grid>
                     <Grid item>
-                        <Button color='primary'>Proceed to Checkout</Button>
+                        <Button
+                            color='primary'
+                            onClick={this.openCheckoutDialog}
+                        >
+                            Proceed to Checkout
+                        </Button>
                     </Grid>
                 </Grid>
             </Drawer>
