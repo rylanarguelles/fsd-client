@@ -1,21 +1,22 @@
 import { decorate, observable } from 'mobx';
+import moment from 'moment';
 
 export default class CheckoutForm {
-    paymentMethod;
+    paymentMethod = 'Cash';
 
-    amountPaid;
+    amountPaid = 0;
 
-    change;
+    change = 0;
 
-    cardNumber;
+    cardNumber = '';
 
-    cardName;
+    cardName = '';
 
-    expiryMonth;
+    expiryMonth = 'January';
 
-    expiryYear;
+    expiryYear = moment().year();
 
-    securityNumber;
+    securityNumber = '';
 }
 
 decorate(CheckoutForm, {
