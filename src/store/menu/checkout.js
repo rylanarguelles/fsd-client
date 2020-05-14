@@ -2,7 +2,7 @@ import { decorate, observable } from 'mobx';
 import CheckoutForm from '../../models/forms/checkout_form';
 
 export class CheckoutState {
-    isShowing;
+    isShowing = false;
 
     form = new CheckoutForm();
 
