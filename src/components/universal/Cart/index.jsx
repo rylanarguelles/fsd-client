@@ -36,31 +36,50 @@ class Cart extends React.Component {
                 open={isShowing}
                 onClose={this.closeCartDrawer}
             >
-                {!emptyCart && (
-                    <Grid
-                        container
-                        direction='column'
-                        spacing={2}
-                        alignItems='center'
-                    >
-                        <Grid item>
-                            <CartItemList />
+                <div style={{ padding: '64px' }}>
+                    {!emptyCart && (
+                        <Grid
+                            container
+                            direction='column'
+                            spacing={2}
+                            alignItems='center'
+                        >
+                            <Grid item>
+                                <CartItemList />
+                            </Grid>
+                            <Grid item>
+                                <Button
+                                    color='primary'
+                                    onClick={this.openCheckoutDialog}
+                                >
+                                    Proceed to Checkout
+                                </Button>
+                            </Grid>
                         </Grid>
-                        <Grid item>
-                            <Button
-                                color='primary'
-                                onClick={this.openCheckoutDialog}
-                            >
-                                Proceed to Checkout
-                            </Button>
+                    )}
+                    {emptyCart && (
+                        <Grid
+                            container
+                            direction='column'
+                            spacing={2}
+                            alignItems='center'
+                        >
+                            <Grid item>
+                                <Typography>
+                                    Items you add to your cart will appear here.
+                                </Typography>
+                            </Grid>
+                            <Grid item>
+                                <Button
+                                    color='primary'
+                                    onClick={this.closeCartDrawer}
+                                >
+                                    Close Drawer
+                                </Button>
+                            </Grid>
                         </Grid>
-                    </Grid>
-                )}
-                {emptyCart && (
-                    <Typography>
-                        Items you add to your cart will appear here.
-                    </Typography>
-                )}
+                    )}
+                </div>
             </Drawer>
         );
     }
