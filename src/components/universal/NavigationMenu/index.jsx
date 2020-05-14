@@ -24,6 +24,8 @@ class NavigationMenu extends React.Component {
     }
 
     render() {
+        const { MenuStore } = this.props;
+        const { cart } = MenuStore;
         return (
             <Grid container direction='column' spacing={2}>
                 <Grid item>
@@ -56,7 +58,7 @@ class NavigationMenu extends React.Component {
                     </Grid>
                     <Grid item>
                         <IconButton onClick={this.toggleCartDrawer}>
-                            <Badge badgeContent={0} color='primary'>
+                            <Badge badgeContent={cart.length} color='primary'>
                                 <ShoppingCartIcon />
                             </Badge>
                         </IconButton>
