@@ -3,13 +3,8 @@ import { inject, observer } from 'mobx-react';
 import Button from '@material-ui/core/Button';
 import Drawer from '@material-ui/core/Drawer';
 import Grid from '@material-ui/core/Grid';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
-import CartItemRow from './components/CartItemRow';
+import CartItemList from './components/CartItemList';
 import MenuController from '../../../controllers/menu_controller';
 
 class Cart extends React.Component {
@@ -33,7 +28,6 @@ class Cart extends React.Component {
         const {
             cart,
             cartState: { isShowing },
-            cartTotal,
         } = MenuStore;
         const emptyCart = cart.length === 0;
         return (
@@ -50,30 +44,7 @@ class Cart extends React.Component {
                         alignItems='center'
                     >
                         <Grid item>
-                            <Table>
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell></TableCell>
-                                        <TableCell>Qty.</TableCell>
-                                        <TableCell>Item</TableCell>
-                                        <TableCell>Subtotal</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {cart.map((item) => (
-                                        <CartItemRow
-                                            key={item.item.id}
-                                            cartItem={item}
-                                        />
-                                    ))}
-                                    <TableRow>
-                                        <TableCell></TableCell>
-                                        <TableCell></TableCell>
-                                        <TableCell>Total</TableCell>
-                                        <TableCell align='right'>{`${cartTotal} AUD`}</TableCell>
-                                    </TableRow>
-                                </TableBody>
-                            </Table>
+                            <CartItemList />
                         </Grid>
                         <Grid item>
                             <Button
