@@ -1,6 +1,7 @@
 import { decorate, observable } from 'mobx';
 import addCartItemFormState from './menu/add_cart_item_form';
 import cartState from './menu/cart';
+import checkoutState from './menu/checkout';
 
 export class MenuStore {
     menuItems = undefined;
@@ -9,6 +10,7 @@ export class MenuStore {
     orders = undefined;
     addCartItemForm = addCartItemFormState;
     cartState = cartState;
+    checkoutState = checkoutState;
 }
 
 decorate(MenuStore, {
@@ -18,6 +20,7 @@ decorate(MenuStore, {
     orders: observable,
     addCartItemForm: observable,
     cartState: observable,
+    checkoutState: observable,
 });
 
 export default new MenuStore();
