@@ -74,7 +74,7 @@ class Cart extends React.Component {
                                     color='primary'
                                     onClick={this.closeCartDrawer}
                                 >
-                                    Close Drawer
+                                    Back to Menu
                                 </Button>
                             </Grid>
                         </Grid>
