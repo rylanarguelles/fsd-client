@@ -18,7 +18,6 @@ export default class MenuController {
             item: MenuStore.activeItem,
             quantity: MenuStore.addCartItemForm.form.quantity,
         });
-        console.log(MenuStore.cart);
     }
 
     static toggleCartDrawer(shouldShow) {
