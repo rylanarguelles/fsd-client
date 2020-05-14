@@ -1,10 +1,12 @@
 import React from 'react';
+import { inject, observer } from 'mobx-react';
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 import AddItemDialog from './components/AddItemDialog';
 import MenuItem from './components/MenuItem';
 import MenuController from '../../controllers/menu_controller';
 
-export default class Menu extends React.Component {
+class Menu extends React.Component {
     constructor(props) {
         super(props);
 
@@ -17,38 +19,35 @@ export default class Menu extends React.Component {
     }
 
     render() {
+        const { MenuStore } = this.props;
+        const { menuItems } = MenuStore;
+        const emptyMenuItems = menuItems === undefined;
         return (
-            <Grid container direction='row' spacing={2}>
-                <Grid item>
-                    <MenuItem
-                        toggleAddDialog={() =>
-                            this.toggleAddItemDialog(undefined)
-                        }
-                    />
-                </Grid>
-                <Grid item>
-                    <MenuItem
-                        toggleAddDialog={() =>
-                            this.toggleAddItemDialog(undefined)
-                        }
-                    />
-                </Grid>
-                <Grid item>
-                    <MenuItem
-                        toggleAddDialog={() =>
-                            this.toggleAddItemDialog(undefined)
-                        }
-                    />
-                </Grid>
-                <Grid item>
-                    <MenuItem
-                        toggleAddDialog={() =>
-                            this.toggleAddItemDialog(undefined)
-                        }
-                    />
-                </Grid>
-                <AddItemDialog />
-            </Grid>
+            <React.Fragment>
+                {!emptyMenuItems && (
+                    <Grid container direction='row' spacing={2}>
+                        {Array.from(menuItems).map((i) => (
+                            <Grid item key={i.id}>
+                                <MenuItem
+                                    item={i}
+                                    toggleAddDialog={() =>
+                                        this.toggleAddItemDialog(i)
+                                    }
+                                />
+                            </Grid>
+                        ))}
+                        <AddItemDialog />
+                    </Grid>
+                )}
+                {emptyMenuItems && (
+                    <Typography>
+                        There are no available menu items. Please check again
+                        another time!
+                    </Typography>
+                )}
+            </React.Fragment>
         );
     }
 }
+
+export default inject('MenuStore')(observer(Menu));

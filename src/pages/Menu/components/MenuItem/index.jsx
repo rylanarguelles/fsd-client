@@ -18,10 +18,10 @@ class MenuItem extends React.Component {
         return (
             <Card className={classes.item}>
                 <CardContent>
-                    <Typography variant='h6'>Beef Burger</Typography>
-                    <Typography>9 USD</Typography>
+                    <Typography variant='h6'>{item.name}</Typography>
+                    <Typography>{`${item.price} AUD`}</Typography>
                     <Typography variant='overline' color='textSecondary'>
-                        506 kJ
+                        {item.caloricIntake}
                     </Typography>
                 </CardContent>
                 <CardActions>

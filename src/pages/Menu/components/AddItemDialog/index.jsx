@@ -64,7 +64,7 @@ class AddItemDialog extends React.Component {
                 fullWidth
                 maxWidth='sm'
             >
-                <DialogTitle>Add Beef Burger to Cart</DialogTitle>
+                <DialogTitle>{`Add ${activeItem.name} to Cart`}</DialogTitle>
                 <DialogContent>
                     <DialogContentText>Select the quantity:</DialogContentText>
                     <Grid
@@ -95,7 +95,7 @@ class AddItemDialog extends React.Component {
                         </Grid>
                         <Grid item>
                             <Typography color='textSecondary'>
-                                Price * Quantity
+                                {activeItem.price * quantity}
                             </Typography>
                         </Grid>
                     </Grid>
