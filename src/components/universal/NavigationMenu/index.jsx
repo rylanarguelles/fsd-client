@@ -41,7 +41,7 @@ class NavigationMenu extends React.Component {
                     <Grid item>
                         <Grid container direction='row' spacing={4}>
                             <Grid item>
-                                <Link to=''>
+                                <Link to='/menu'>
                                     <Typography variant='overline'>
                                         Menu
                                     </Typography>
