@@ -10,6 +10,7 @@ export class MenuStore {
     addCartItemForm = addCartItemFormState;
     cartState = cartState;
     checkoutState = checkoutState;
+    orders = undefined;
 
     get cartTotal() {
         let total = 0;
@@ -29,6 +30,7 @@ decorate(MenuStore, {
     addCartItemForm: observable,
     cartState: observable,
     checkoutState: observable,
+    orders: observable,
     cartTotal: computed,
 });
 
