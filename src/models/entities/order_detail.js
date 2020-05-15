@@ -12,10 +12,10 @@ export default class OrderDetail {
     subtotal;
 
     constructor(detail) {
-        this.id = detail.id;
+        this.id = detail.details_id;
         this.orderId = detail.order_id;
-        this.itemId = detail.item_id;
-        this.itemQuantity = detail.item_quantity;
+        this.itemId = detail.menu_item;
+        this.itemQuantity = detail.quantity;
         this.subtotal = detail.subtotal;
     }
 }

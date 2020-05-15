@@ -10,9 +10,9 @@ export default class MenuItem {
     caloricIntake;
 
     constructor(item) {
-        this.id = item.id;
-        this.name = item.name;
-        this.price = item.price;
+        this.id = item.item_id;
+        this.name = item.item_name;
+        this.price = item.item_price;
         this.caloricIntake = item.caloric_intake;
     }
 }
