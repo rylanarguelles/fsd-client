@@ -4,9 +4,10 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'mobx-react';
 import MenuStore from './store/menu_store';
+import BookingStore from './store/booking_store';
 
 const Root = (
-    <Provider MenuStore={MenuStore}>
+    <Provider MenuStore={MenuStore} BookingStore={BookingStore}>
         <App />
     </Provider>
 );
