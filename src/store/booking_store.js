@@ -5,7 +5,7 @@ import bookerDetailsFormState from './booking/booker_details_form';
 export class BookingStore {
     bookings = undefined;
 
-    customerBookings = [];
+    customerBookings = undefined;
 
     addBookingForm = addBookingFormState;
 
