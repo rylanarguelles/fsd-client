@@ -1,11 +1,41 @@
 import React from 'react';
+import { inject, observer } from 'mobx-react';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
+import BookingController from '../../../../controllers/booking_controller';
 
-export default class BookerDetailsForm extends React.Component {
+class BookerDetailsForm extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.onChange = this.onChange.bind(this);
+        this.searchBooking = this.searchBooking.bind(this);
+    }
+
+    onChange = (property) => (e) => {
+        const { BookingStore } = this.props;
+        const {
+            bookerDetailsForm: { form },
+        } = BookingStore;
+        form[property] = e.target.value;
+    };
+
+    searchBooking() {
+        BookingController.searchBookings();
+    }
+
     render() {
+        const { BookingStore } = this.props;
+        const {
+            bookerDetailsForm: {
+                form: { email, mobileNumber },
+            },
+        } = BookingStore;
+        const emptyEmail = email === '';
+        const emptyMobileNumber = mobileNumber === '';
+        const emptySearch = emptyEmail || emptyMobileNumber;
         return (
             <Grid
                 container
@@ -25,6 +55,8 @@ export default class BookerDetailsForm extends React.Component {
                                 required
                                 fullWidth
                                 label='Booking E-mail'
+                                value={email}
+                                onChange={this.onChange('email')}
                             />
                         </div>
                     </Grid>
@@ -34,6 +66,8 @@ export default class BookerDetailsForm extends React.Component {
                                 required
                                 fullWidth
                                 label='Mobile Number'
+                                value={mobileNumber}
+                                onChange={this.onChange('mobileNumber')}
                             />
                         </div>
                     </Grid>
@@ -43,6 +77,8 @@ export default class BookerDetailsForm extends React.Component {
                                 fullWidth
                                 color='primary'
                                 variant='contained'
+                                onClick={this.searchBooking}
+                                disabled={emptySearch}
                             >
                                 Search
                             </Button>
@@ -77,3 +113,5 @@ export default class BookerDetailsForm extends React.Component {
         );
     }
 }
+
+export default inject('BookingStore')(observer(BookerDetailsForm));
