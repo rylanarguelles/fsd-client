@@ -6,6 +6,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
+import BookingRow from '../BookingRow';
 
 class BookingDetails extends React.Component {
     render() {
@@ -44,7 +45,11 @@ class BookingDetails extends React.Component {
                                         <TableCell></TableCell>
                                     </TableRow>
                                 </TableHead>
-                                <TableBody></TableBody>
+                                <TableBody>
+                                    {customerBookings.map((b) => (
+                                        <BookingRow key={b.id} booking={b} />
+                                    ))}
+                                </TableBody>
                             </Table>
                         )}
                     </div>
