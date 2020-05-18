@@ -6,11 +6,15 @@ export default class AddBookingForm {
 
     mobileNumber = '';
 
-    bookingHour = '';
+    bookingHour = 8;
 
-    bookingMinute = '';
+    bookingMinute = 0;
 
-    bookingDate = moment().format('L');
+    bookingMonth = moment().format('MMMM');
+
+    bookingDay = moment().format('DD');
+
+    bookingYear = moment().year();
 
     quantity = 1;
 }
@@ -20,6 +24,7 @@ decorate(AddBookingForm, {
     mobileNumber: observable,
     bookingHour: observable,
     bookingMinute: observable,
-    bookingDate: observable,
+    bookingMonth: observable,
+    bookingDay: observable,
     quantity: observable,
 });
