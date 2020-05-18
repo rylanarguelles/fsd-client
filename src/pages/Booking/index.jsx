@@ -1,5 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
+import AddBookingForm from './components/AddBookingForm';
 import BookerDetailsForm from './components/BookerDetailsForm';
 import BookingDetails from './components/BookingDetails';
 
@@ -13,7 +14,7 @@ export default class Booking extends React.Component {
                 <Grid item>
                     <BookingDetails />
                 </Grid>
-                {/* ADD BOOKING FORM */}
+                <AddBookingForm />
             </Grid>
         );
     }
