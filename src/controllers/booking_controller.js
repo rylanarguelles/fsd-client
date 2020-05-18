@@ -19,4 +19,12 @@ export default class BookingController {
             });
         }
     }
+
+    static toggleAddBookingDialog(shouldShow) {
+        BookingStore.addBookingForm.isShowing = shouldShow;
+
+        if (!shouldShow) {
+            BookingStore.addBookingForm.resetForm();
+        }
+    }
 }
