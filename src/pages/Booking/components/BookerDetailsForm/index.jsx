@@ -12,6 +12,7 @@ class BookerDetailsForm extends React.Component {
 
         this.onChange = this.onChange.bind(this);
         this.searchBooking = this.searchBooking.bind(this);
+        this.openAddBookingDialog = this.openAddBookingDialog.bind(this);
     }
 
     onChange = (property) => (e) => {
@@ -24,6 +25,10 @@ class BookerDetailsForm extends React.Component {
 
     searchBooking() {
         BookingController.searchBookings();
+    }
+
+    openAddBookingDialog() {
+        BookingController.toggleAddBookingDialog(true);
     }
 
     render() {
@@ -103,6 +108,7 @@ class BookerDetailsForm extends React.Component {
                                 fullWidth
                                 color='primary'
                                 variant='contained'
+                                onClick={this.openAddBookingDialog}
                             >
                                 Add Booking
                             </Button>
