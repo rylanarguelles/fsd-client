@@ -1,7 +1,6 @@
+import moment from 'moment';
 import MenuService from '../services/menu';
 import MenuStore from '../store/menu_store';
-
-// TODO: placeOrder static function
 
 export default class MenuController {
     static getAllMenuItems() {
@@ -39,5 +38,16 @@ export default class MenuController {
         if (!shouldShow) {
             MenuStore.checkoutState.resetForm();
         }
+    }
+
+    static checkout() {
+        const orderDate = moment();
+        const orderTotal = MenuStore.cartTotal;
+
+        MenuService.addOrder({ orderDate, orderTotal });
+    }
+
+    static emptyCart() {
+        MenuStore.cart = [];
     }
 }
