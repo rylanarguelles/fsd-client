@@ -7,4 +7,8 @@ export default class MenuService {
             return response.data.map((mi) => new MenuItem(mi));
         });
     }
+
+    static async addOrder(form) {
+        return api.post('/checkout', form);
+    }
 }
