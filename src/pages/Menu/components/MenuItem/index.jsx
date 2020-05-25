@@ -21,7 +21,7 @@ class MenuItem extends React.Component {
                     <Typography variant='h6'>{item.name}</Typography>
                     <Typography>{`${item.price} AUD`}</Typography>
                     <Typography variant='overline' color='textSecondary'>
-                        {item.caloricIntake}
+                        {`${item.caloricIntake} calories`}
                     </Typography>
                 </CardContent>
                 <CardActions>
