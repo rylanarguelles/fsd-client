@@ -7,6 +7,10 @@ import MenuItem from './components/MenuItem';
 import MenuController from '../../controllers/menu_controller';
 
 class Menu extends React.Component {
+    componentDidMount() {
+        MenuController.getAllMenuItems();
+    }
+
     constructor(props) {
         super(props);
 
