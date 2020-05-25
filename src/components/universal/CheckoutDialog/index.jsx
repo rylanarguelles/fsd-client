@@ -20,6 +20,7 @@ class CheckoutDialog extends React.Component {
 
         this.closeCheckoutDialog = this.closeCheckoutDialog.bind(this);
         this.onChange = this.onChange.bind(this);
+        this.checkout = this.checkout.bind(this);
     }
 
     closeCheckoutDialog() {
@@ -33,6 +34,13 @@ class CheckoutDialog extends React.Component {
         } = MenuStore;
         form[property] = e.target.value;
     };
+
+    checkout() {
+        MenuController.checkout();
+        MenuController.emptyCart();
+        this.closeCheckoutDialog();
+        MenuController.toggleCartDrawer(false);
+    }
 
     render() {
         const { MenuStore } = this.props;
@@ -161,7 +169,9 @@ class CheckoutDialog extends React.Component {
                     >
                         Cancel
                     </Button>
-                    <Button color='primary'>Pay</Button>
+                    <Button color='primary' onClick={this.checkout}>
+                        Pay
+                    </Button>
                 </DialogActions>
             </Dialog>
         );
