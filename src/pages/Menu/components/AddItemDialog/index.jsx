@@ -64,42 +64,54 @@ class AddItemDialog extends React.Component {
                 fullWidth
                 maxWidth='sm'
             >
-                <DialogTitle>{`Add ${activeItem.name} to Cart`}</DialogTitle>
-                <DialogContent>
-                    <DialogContentText>Select the quantity:</DialogContentText>
-                    <Grid
-                        container
-                        direction='row'
-                        spacing={2}
-                        alignItems='center'
-                    >
-                        <Grid item>
-                            <IconButton
-                                color='secondary'
-                                disabled={quantity === 1}
-                                onClick={() => this.changeQuantity('reduce')}
-                            >
-                                <RemoveIcon />
-                            </IconButton>
+                <DialogTitle>
+                    {activeItem
+                        ? `Add ${activeItem.name} to Cart`
+                        : 'No item selected'}
+                </DialogTitle>
+                {activeItem && (
+                    <DialogContent>
+                        <DialogContentText>
+                            Select the quantity:
+                        </DialogContentText>
+                        <Grid
+                            container
+                            direction='row'
+                            spacing={2}
+                            alignItems='center'
+                        >
+                            <Grid item>
+                                <IconButton
+                                    color='secondary'
+                                    disabled={quantity === 1}
+                                    onClick={() =>
+                                        this.changeQuantity('reduce')
+                                    }
+                                >
+                                    <RemoveIcon />
+                                </IconButton>
+                            </Grid>
+                            <Grid item>
+                                <Typography>{quantity}</Typography>
+                            </Grid>
+                            <Grid item>
+                                <IconButton
+                                    color='primary'
+                                    onClick={() =>
+                                        this.changeQuantity('increase')
+                                    }
+                                >
+                                    <AddIcon />
+                                </IconButton>
+                            </Grid>
+                            <Grid item>
+                                <Typography color='textSecondary'>
+                                    {`${activeItem.price * quantity} AUD`}
+                                </Typography>
+                            </Grid>
                         </Grid>
-                        <Grid item>
-                            <Typography>{quantity}</Typography>
-                        </Grid>
-                        <Grid item>
-                            <IconButton
-                                color='primary'
-                                onClick={() => this.changeQuantity('increase')}
-                            >
-                                <AddIcon />
-                            </IconButton>
-                        </Grid>
-                        <Grid item>
-                            <Typography color='textSecondary'>
-                                {activeItem.price * quantity}
-                            </Typography>
-                        </Grid>
-                    </Grid>
-                </DialogContent>
+                    </DialogContent>
+                )}
                 <DialogActions>
                     <Button color='secondary' onClick={this.closeAddItemDialog}>
                         Cancel
