@@ -1,8 +1,15 @@
+import MenuService from '../services/menu';
 import MenuStore from '../store/menu_store';
 
 // TODO: placeOrder static function
 
 export default class MenuController {
+    static getAllMenuItems() {
+        MenuService.fetchAllMenuItems().then((mi) => {
+            MenuStore.menuItems = mi;
+        });
+    }
+
     static toggleAddItemDialog(shouldShow) {
         MenuStore.addCartItemForm.isShowing = shouldShow;
 
