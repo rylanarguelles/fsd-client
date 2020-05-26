@@ -74,6 +74,9 @@ class BookerDetailsForm extends React.Component {
                                 value={mobileNumber}
                                 onChange={this.onChange('mobileNumber')}
                             />
+                            <Typography variant='overline'>
+                                Do not include the first 0
+                            </Typography>
                         </div>
                     </Grid>
                     <Grid item>
