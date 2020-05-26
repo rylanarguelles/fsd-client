@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import AddBookingForm from './components/AddBookingForm';
 import BookerDetailsForm from './components/BookerDetailsForm';
 import BookingDetails from './components/BookingDetails';
+import UpdateBookingForm from './components/UpdateBookingForm';
 import BookingController from '../../controllers/booking_controller';
 
 export default class Booking extends React.Component {
@@ -20,6 +21,7 @@ export default class Booking extends React.Component {
                     <BookingDetails />
                 </Grid>
                 <AddBookingForm />
+                <UpdateBookingForm />
             </Grid>
         );
     }
