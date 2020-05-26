@@ -38,6 +38,7 @@ class AddBookingForm extends React.Component {
         this.closeAddBookingDialog = this.closeAddBookingDialog.bind(this);
         this.onChange = this.onChange.bind(this);
         this.changeQuantity = this.changeQuantity.bind(this);
+        this.addBooking = this.addBooking.bind(this);
     }
 
     closeAddBookingDialog() {
@@ -67,6 +68,11 @@ class AddBookingForm extends React.Component {
             default:
                 form['quantity']++;
         }
+    }
+
+    addBooking() {
+        BookingController.addBooking();
+        this.closeAddBookingDialog();
     }
 
     render() {
@@ -225,7 +231,11 @@ class AddBookingForm extends React.Component {
                     >
                         Cancel
                     </Button>
-                    <Button color='primary' disabled={hasEmptyField}>
+                    <Button
+                        color='primary'
+                        disabled={hasEmptyField}
+                        onClick={this.addBooking}
+                    >
                         Add
                     </Button>
                 </DialogActions>
