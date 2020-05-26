@@ -10,7 +10,7 @@ export default class AddBookingForm {
 
     bookingMinute = 0;
 
-    bookingMonth = moment().format('MMMM');
+    bookingMonth = moment().get('month');
 
     bookingDay = moment().format('DD');
 

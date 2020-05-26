@@ -72,6 +72,8 @@ class AddBookingForm extends React.Component {
 
     addBooking() {
         BookingController.addBooking();
+        BookingController.getAllBookings();
+        BookingController.searchBookings();
         this.closeAddBookingDialog();
     }
 
@@ -168,7 +170,10 @@ class AddBookingForm extends React.Component {
                                 onChange={this.onChange('bookingMonth')}
                             >
                                 {moment.months().map((month) => (
-                                    <MenuItem key={month} value={month}>
+                                    <MenuItem
+                                        key={month}
+                                        value={moment.months().indexOf(month)}
+                                    >
                                         {month}
                                     </MenuItem>
                                 ))}
