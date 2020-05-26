@@ -90,6 +90,9 @@ class BookerDetailsForm extends React.Component {
                             >
                                 Search
                             </Button>
+                            <Typography variant='overline'>
+                                Click this every time you update or cancel
+                            </Typography>
                         </div>
                     </Grid>
                 </Grid>
