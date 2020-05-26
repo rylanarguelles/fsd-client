@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import TableCell from '@material-ui/core/TableCell';
@@ -11,7 +12,7 @@ export default class BookingRow extends React.Component {
             <TableRow>
                 <TableCell>{booking.id}</TableCell>
                 <TableCell>{booking.quantity}</TableCell>
-                <TableCell>{booking.date}</TableCell>
+                <TableCell>{moment(booking.date).format('L')}</TableCell>
                 <TableCell>{booking.time}</TableCell>
                 <TableCell>
                     <Grid
@@ -20,13 +21,17 @@ export default class BookingRow extends React.Component {
                         spacing={1}
                         alignItems='center'
                     >
-                        <Grid item>
-                            <Button color='primary' variant='contained'>
-                                Change
-                            </Button>
-                            <Button color='secondary' variant='contained'>
-                                Cancel
-                            </Button>
+                        <Grid item container direction='row' spacing={2}>
+                            <Grid item>
+                                <Button color='primary' variant='contained'>
+                                    Change
+                                </Button>
+                            </Grid>
+                            <Grid item>
+                                <Button color='secondary' variant='contained'>
+                                    Cancel
+                                </Button>
+                            </Grid>
                         </Grid>
                     </Grid>
                 </TableCell>
