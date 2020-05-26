@@ -9,6 +9,6 @@ export default class MenuService {
     }
 
     static async addOrder(form) {
-        return api.post('/checkout', form);
+        return api.post('/checkout/', form);
     }
 }
