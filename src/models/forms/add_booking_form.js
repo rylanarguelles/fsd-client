@@ -12,7 +12,7 @@ export default class AddBookingForm {
 
     bookingMonth = moment().get('month');
 
-    bookingDay = moment().format('DD');
+    bookingDay = `${parseInt(moment().format('DD'))}`;
 
     bookingYear = moment().year();
 

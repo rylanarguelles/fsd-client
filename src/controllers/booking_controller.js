@@ -51,7 +51,7 @@ export default class BookingController {
         bookingDate
             .set('year', form.bookingYear)
             .set('month', form.bookingMonth)
-            .set('date', form.bookingDay);
+            .set('date', parseInt(form.bookingDay) + 1);
 
         BookingService.addBooking({
             bookingDate,
@@ -77,9 +77,9 @@ export default class BookingController {
     }
 
     static fillUpdateBookingForm(booking) {
-        BookingStore.updateBookingForm.form.bookingDay = moment(
-            booking.date,
-        ).get('date');
+        BookingStore.updateBookingForm.form.bookingDay = parseInt(
+            moment(booking.date).get('date'),
+        );
         BookingStore.updateBookingForm.form.bookingMonth = moment(
             booking.date,
         ).get('month');
@@ -109,7 +109,7 @@ export default class BookingController {
         bookingDate
             .set('year', form.bookingYear)
             .set('month', form.bookingMonth)
-            .set('date', form.bookingDay);
+            .set('date', parseInt(form.bookingDay) + 1);
 
         BookingService.updateBooking({
             bookingId,
