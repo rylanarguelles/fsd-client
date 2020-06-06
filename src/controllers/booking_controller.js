@@ -3,12 +3,15 @@ import BookingService from '../services/booking';
 import BookingStore from '../store/booking_store';
 
 export default class BookingController {
+    // Fetches all existing bookings from the database
     static getAllBookings() {
         BookingService.fetchAllBookings().then((b) => {
             BookingStore.bookings = b;
         });
     }
 
+    // Pushes existing bookings into an array for display if the booking
+    // has the same email and mobile number
     static searchBookings() {
         BookingStore.customerBookings = [];
         this.getAllBookings();
@@ -29,6 +32,7 @@ export default class BookingController {
         }
     }
 
+    // Opens or closes the dialog for adding a booking to the database
     static toggleAddBookingDialog(shouldShow) {
         BookingStore.addBookingForm.isShowing = shouldShow;
 
@@ -37,6 +41,7 @@ export default class BookingController {
         }
     }
 
+    // Adds a booking to the database
     static addBooking() {
         const form = BookingStore.addBookingForm.form;
         const email = form.email;
@@ -64,10 +69,12 @@ export default class BookingController {
         });
     }
 
+    // Makes the selected booking the active booking for updating
     static setActiveBooking(bookingId) {
         BookingStore.activeBooking = bookingId;
     }
 
+    // Opens or closes the dialog for updating an existing booking
     static toggleUpdateBookingDialog(shouldShow) {
         BookingStore.updateBookingForm.isShowing = shouldShow;
 
@@ -76,6 +83,8 @@ export default class BookingController {
         }
     }
 
+    // If an existing booking is being updated, its current details are
+    // automatically placed into the form's input fields
     static fillUpdateBookingForm(booking) {
         BookingStore.updateBookingForm.form.bookingDay = parseInt(
             moment(booking.date).get('date'),
@@ -96,6 +105,7 @@ export default class BookingController {
         );
     }
 
+    // Updates an existing booking from the database and saves the new details
     static updateBooking() {
         const bookingId = BookingStore.activeBooking;
         const form = BookingStore.updateBookingForm.form;
@@ -121,6 +131,7 @@ export default class BookingController {
         });
     }
 
+    // Deletes an existing booking
     static deleteBooking(booking) {
         const bookingId = booking.id;
         BookingService.deleteBooking({ bookingId }).then((b) => {
