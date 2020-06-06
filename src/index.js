@@ -6,7 +6,6 @@ import { Provider } from 'mobx-react';
 import MenuStore from './store/menu_store';
 import BookingStore from './store/booking_store';
 
-// This is where everything starts.
 const Root = (
     <Provider MenuStore={MenuStore} BookingStore={BookingStore}>
         <App />
